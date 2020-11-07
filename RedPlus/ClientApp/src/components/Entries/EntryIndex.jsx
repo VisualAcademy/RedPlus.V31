@@ -27,7 +27,8 @@ export class EntryIndex extends Component {
 
     // 글쓰기 페이지로 이동
     navigateToCreate() {
-        const { history } = this.props;
-        history.push('/Entries/Create'); 
+        //const { history } = this.props;
+        //history.push('/Entries/Create'); 
+        this.props.history.push('/Entries/Create'); 
     }
 }
