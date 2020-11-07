@@ -1,4 +1,5 @@
-﻿import React, { Component } from 'react';
+﻿// @page "/Entries/Delete"
+import React, { Component } from 'react';
 
 export class EntryDelete extends Component {
     constructor(props) {

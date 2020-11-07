@@ -1,4 +1,5 @@
-﻿import React, { Component } from 'react';
+﻿// @page "/Entries/Edit/:id"
+import React, { Component } from 'react';
 
 export class EntryEdit extends Component {
     constructor(props) {

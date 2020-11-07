@@ -1,4 +1,5 @@
-﻿import React, { Component } from 'react';
+﻿// @page "/Entries/Create" 
+import React, { Component } from 'react';
 
 export class EntryCreate extends Component {
     constructor(props) {

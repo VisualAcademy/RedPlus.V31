@@ -1,4 +1,5 @@
-﻿import React, { Component } from 'react';
+﻿// @page "/Entries/Details/:id"
+import React, { Component } from 'react';
 
 export class EntryDetails extends Component {
     constructor(props) {

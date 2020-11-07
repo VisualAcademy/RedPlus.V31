@@ -1,4 +1,6 @@
-﻿import React, { Component } from 'react';
+﻿// @page "/Entries"
+// @page "/Entries/Index"
+import React, { Component } from 'react';
 
 export class EntryIndex extends Component {
     constructor(props) {
