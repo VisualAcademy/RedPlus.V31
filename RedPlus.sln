@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30626.31
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedPlus", "RedPlus\RedPlus.csproj", "{BB108BBD-7E4F-49D4-8895-1C2933ACF36D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedPlus.Models", "RedPlus.Models\RedPlus.Models.csproj", "{E84495B7-F4F0-4A65-8E19-6A59B2DD2225}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedPlus.Models", "RedPlus.Models\RedPlus.Models.csproj", "{E84495B7-F4F0-4A65-8E19-6A59B2DD2225}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "RedPlus.SqlServer", "RedPlus.SqlServer\RedPlus.SqlServer.sqlproj", "{4CC732F6-2EF9-42FC-8AFA-58E3517EF61F}"
 EndProject
