@@ -1,3 +1,4 @@
+﻿using EntryApp.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -49,6 +50,20 @@ namespace RedPlus
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            #region CORS
+            //[CORS] Angular, React 등의 SPA를 위한 CORS(Cross Origin Resource Sharing) 설정 1/2
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.WithOrigins("https://localhost:3000"); // [!] Trailing Slash
+                });
+            });
+            #endregion
+
+            // EntryApp 관련 의존성(종속성) 주입 관련 코드만 따로 모아서 관리 
+            services.AddDependencyInjectionContainerForEntryApp(Configuration.GetConnectionString("DefaultConnection"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,11 +87,17 @@ namespace RedPlus
 
             app.UseRouting();
 
+            #region CORS
+            //[CORS] Angular, React 등의 SPA를 위한 CORS(Cross Origin Resource Sharing) 설정 2/2
+            app.UseCors(); // 반드시 UseRouting() 뒤에 와야 함  
+            #endregion
+
             app.UseAuthentication();
             app.UseIdentityServer();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapDefaultControllerRoute(); 
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
