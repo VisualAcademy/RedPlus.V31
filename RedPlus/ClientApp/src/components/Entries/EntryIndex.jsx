@@ -35,7 +35,8 @@ export class EntryIndex extends Component {
         return (
             <>
                 <h1>List <button className="btn btn-sm btn-primary"
-                    onClick={this.navigateToCreate}>Create</button></h1>
+                    onClick={this.navigateToCreate}><span className="fa fa-plus">+</span></button></h1>
+                <div style={{ fontStyle: "italic" }}>게시판 리스트 페이지입니다.</div> 
                 {contents}
             </>
         );
@@ -99,6 +100,6 @@ export class EntryIndex extends Component {
 
     deleteBy(id) {
         const { history } = this.props;
-        history.push("/Entries/Delete/" + id);
+        history.push(`/Entries/Delete/${id}`);
     }
 }
