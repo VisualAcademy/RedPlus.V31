@@ -16,7 +16,8 @@ export class EntryIndex extends Component {
         // https://ko.reactjs.org/docs/handling-events.html
         this.navigateToCreate = this.navigateToCreate.bind(this);
         this.editBy = this.editBy.bind(this);
-        this.deleteBy = this.deleteBy.bind(this); 
+        this.deleteBy = this.deleteBy.bind(this);
+        this.deleteDirectBy = this.deleteDirectBy.bind(this); 
     }
 
     // 페이지 로드, OnInitialized()
@@ -26,17 +27,15 @@ export class EntryIndex extends Component {
     }
 
     render() {
-        let contents = this.state.loading ? (
-            <p><em>Loading...</em></p>
-        ) : (
-            this.renderEntriesTable(this.state.entries)
-        );
+        let contents = this.state.loading
+            ? (<p><em>Loading...</em></p>)
+            : (this.renderEntriesTable(this.state.entries));
 
         return (
             <>
                 <h1>List <button className="btn btn-sm btn-primary"
                     onClick={this.navigateToCreate}><span className="fa fa-plus">+</span></button></h1>
-                <div style={{ fontStyle: "italic" }}>게시판 리스트 페이지입니다.</div> 
+                <div style={{ fontStyle: "italic" }}>게시판 리스트 페이지입니다.</div>
                 {contents}
             </>
         );
@@ -85,6 +84,9 @@ export class EntryIndex extends Component {
                                 &nbsp;
                                 <button className="btn btn-sm btn-danger"
                                     onClick={() => this.deleteBy(entry.id)}>Delete</button>
+                                &nbsp;
+                                <button className="btn btn-sm btn-danger"
+                                    onClick={() => this.deleteDirectBy(entry.id)}>Delete</button>
                             </td>
                         </tr>
                     ))}
@@ -101,5 +103,19 @@ export class EntryIndex extends Component {
     deleteBy(id) {
         const { history } = this.props;
         history.push(`/Entries/Delete/${id}`);
+    }
+
+    // 학습용 직접 삭제 메서드
+    deleteDirectBy(id) {
+        if (window.confirm("Delete?")) {
+            fetch("/api/Entries/" + id, { method: 'delete' }).then(result => {
+                // 인메모리의 상태 데이터 업데이트
+                this.setState({
+                    entries: this.state.entries.filter((en) => {
+                        return en.id != id; 
+                    })
+                })
+            });
+        }
     }
 }
