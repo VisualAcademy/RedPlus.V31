@@ -18,6 +18,7 @@ export class EntryIndex extends Component {
         this.editBy = this.editBy.bind(this);
         this.deleteBy = this.deleteBy.bind(this);
         this.deleteDirectBy = this.deleteDirectBy.bind(this); 
+        this.detailsBy = this.detailsBy.bind(this);
     }
 
     // 페이지 로드, OnInitialized()
@@ -74,11 +75,17 @@ export class EntryIndex extends Component {
                     {entries.map(entry => (
                         <tr key={entry.id}>
                             <td>{entry.id}</td>
-                            <td>{entry.title}</td>
+                            <td>
+                                <button className="btn btn-link"
+                                    onClick={() => this.detailsBy(entry.id)}>{entry.title}</button>
+                            </td>
                             <td>{entry.name}</td>
                             <td>{entry.content}</td>
                             <td>{entry.created ? new Date(entry.created).toLocaleDateString() : "-"}</td>
                             <td className="text-nowrap">
+                                <button className="btn btn-sm btn-secondary"
+                                    onClick={() => this.detailsBy(entry.id)}>Details</button>
+                                &nbsp;
                                 <button className="btn btn-sm btn-primary"
                                     onClick={() => this.editBy(entry.id)}>Edit</button>
                                 &nbsp;
@@ -93,6 +100,11 @@ export class EntryIndex extends Component {
                 </tbody>
             </table>
         );
+    }
+
+    detailsBy(id) {
+        const { history } = this.props;
+        history.push("/Entries/Details/" + id);
     }
 
     editBy(id) {
