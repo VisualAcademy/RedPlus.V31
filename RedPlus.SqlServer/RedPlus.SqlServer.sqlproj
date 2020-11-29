@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{4cc732f6-2ef9-42fc-8afa-58e3517ef61f}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -57,9 +57,11 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="IdentityServer" />
+    <Folder Include="Entries" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="IdentityServer\__EFMigrationsHistory.sql" />
+    <Build Include="Entries\00_Entries.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="IdentityServer\AspNetRoleClaims.sql" />
