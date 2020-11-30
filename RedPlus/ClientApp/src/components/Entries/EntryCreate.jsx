@@ -26,7 +26,7 @@ export class EntryCreate extends Component {
 
         //[2] 화살표 함수(람다 식)로 이벤트 핸들러 바인딩
         //this.handleChageTitle = this.handleChageTitle.bind(this); 
-        this.handleChageContent = this.handleChageContent.bind(this); 
+        //this.handleChageContent = this.handleChageContent.bind(this); 
     }
 
     // 페이지 로드, OnInitialized()
@@ -95,7 +95,7 @@ export class EntryCreate extends Component {
                                 <label>Content</label>
                                 <textarea className="form-control"
                                     placeholder="Enter Content" value={this.state.content}
-                                    onChange={this.handleChageContent}
+                                    onChange={this.handleChageContent.bind(this)}
                                     rows="5"
                                 ></textarea>
                             </div>
