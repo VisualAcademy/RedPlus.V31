@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello React 13 - 컬렉션 형태의 데이터 출력</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script crossorigin="anonymous" src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin="anonymous" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- <script src="./babel.min.js"></script> -->
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        let title = "클래스로 컴포넌트 만들기";
+
+        let seeSharp = {
+            title: "C# 교과서",
+            description: "내용 들어오는 곳..."
+        };
+
+        function BookTitle() {
+            return (
+                <div className="row">
+                    <h1>My Book</h1>
+                </div>
+            );
+        }
+
+        const BookFooter = () => <p>제가 집필한 책 목록입니다.</p>;
+
+        const Copyright = () => {
+            return (<p>Copyright &copy;</p>);
+        }
+
+        // 구조 파괴 할당 
+        function BookCard({ title, description, price, content, imageUrl }) {
+            return (
+                <div className="container mb-2">
+                    <div className="row" style={{'cursor': 'pointer'}}>
+                        <div className="col-2 p-1 card">
+                            <span className="d-none">{title}</span>
+                            <span className="">
+                                <img src={imageUrl} alt={title} className="img-fluid" />
+                            </span>
+                        </div>
+                        <div className="col-10 p-1 card">
+                            <h2 className="card-header">
+                                <a href="https://www.gilbut.co.kr/book/view?bookcode=BN002765" target="_blank"><strong>{title}</strong></a>
+                            </h2>
+                            <p>
+                                <strong>{description}</strong>
+                                <br />
+                                {content}
+                            </p>
+                            <div className="p-1" style={{"margin-top": "auto"}}>
+                                <a href="/BookList"><span className="badge badge-primary">학습 가이드</span></a>
+                                <a href="/Books/Errata.aspx"><span className="badge badge-secondary">오탈자 정보</span></a>
+                                <a href="/BoardIndex?BoardName=Qna"><span className="badge badge-danger">Q&amp;A</span></a>
+                                <a href="https://www.gilbut.co.kr/book/view?bookcode=BN002765" target="_blank"><span className="badge badge-info">길벗 도서 소개</span></a>
+                                <a href="https://www.youtube.com/playlist?list=PLO56HZSjrPTB4NxAsEP8HRk6YKBDLbp7m" target="_blank"><span className="badge badge-success">동영상 강의</span></a>
+                                <a href="https://github.com/gilbutITbook/006890" target="_blank"><span className="badge badge-dark">전체 소스 코드(GitHub)</span></a>
+                                <a href="https://bit.ly/Csharp-textbook" target="_blank"><span className="badge badge-warning">도서 보기</span></a>
+                                <a href="https://bit.ly/2TvAyFj" target="_blank"><span className="badge badge-danger">구매</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        class BookList extends React.Component {
+            state = {
+                theme: 'blue'
+            }
+            blueTheme = () => this.setState({theme: 'blue'});
+            whiteTheme = () => this.setState({theme: 'white'});
+            render() {
+                return (
+                    <>
+                        <div>{this.state.theme === "white" ? "white theme" : "blue theme" }</div>
+                        <div>
+                                <button onClick={ () => { this.setState({theme: 'white'}); } }>White 1</button>
+                                <button onClick={ this.whiteTheme }>White 2</button>
+                                <button onClick={ () => { this.setState({theme: 'blue'}); } }>Blue 1</button>
+                                <button onClick={ this.blueTheme }>Blue 2</button>
+                        </div>
+
+                        {
+                            this.props.books.map(book => {
+                                return <BookCard key={book.id} title={book.title} description={book.description} price={ book.price } content={book.content} imageUrl={book.imageUrl} /> 
+                            })
+                        }
+                        
+                    </>
+                );
+            }
+        }
+
+        const books = [
+            { id: 1, title: "C# 교과서", description: "기초에서 활용까지! 기본기를 탄탄하게 다지는 C# 입문서", content: "C#의 쓰임새와 기초 문법부터 컬렉션, 제네릭, LINQ, 개체 지향, 동적 형식, 비동기 프로그래밍과 같은 활용과 확장 기능까지 입문자에게 필요한 모든 것을 설명합니다.", price: 30000, imageUrl: "https://www.dotnetkorea.com/Books/images/SeeSharpBook.png" },
+            { id: 2, title: "ASP.NET & Core를 다루는 기술", description: "ASP.NET(.NET Framework)과 ASP.NET Core(.NET Core)를 한 권으로 학습합니다.", content: "Microsoft 웹 개발 기술의 집합체인 ASP.NET과 ASP.NET Core를 이용하여 웹 응용프로그램을 제작하는 쉽고, 빠르고, 강력한 기술인 ASP.NET의 전체를 다룹니다.", price: 55000, imageUrl: "https://www.dotnetkorea.com/Books/images/AspNetCore.jpg" },
+        ];
+
+        // 클래스형 컴포넌트
+        class BookApp extends React.Component {
+            render() {
+                return (
+                    <>
+                        <BookTitle />
+                        <BookList sortOrder="ASC" books={ books } /> 
+                        <BookFooter />
+                        <Copyright /> 
+                    </>
+                );
+            }
+        }
+
+        // 최종 렌더링
+        ReactDOM.render(
+            <BookApp />,              
+            document.getElementById("root")
+        );
+    </script>
+</body>
+</html>

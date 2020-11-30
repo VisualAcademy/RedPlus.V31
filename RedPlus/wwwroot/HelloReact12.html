@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello React 12 - 상태 관리와 클릭 이벤트</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script crossorigin="anonymous" src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin="anonymous" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- <script src="./babel.min.js"></script> -->
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        let title = "클래스로 컴포넌트 만들기";
+
+        let seeSharp = {
+            title: "C# 교과서",
+            description: "내용 들어오는 곳..."
+        };
+
+        function BookTitle() {
+            return (
+                <div className="row">
+                    <h1>My Book</h1>
+                </div>
+            );
+        }
+
+        const BookFooter = () => <p>제가 집필한 책 목록입니다.</p>;
+
+        const Copyright = () => {
+            return (<p>Copyright &copy;</p>);
+        }
+
+        // 구조 파괴 할당 
+        function BookCard({ title, description, price }) {
+            return (
+                <div className="container mb-2">
+                    <div className="row">
+                        <div className="col-12">
+                            {title}
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-2">
+                            {title}
+                        </div>
+                        <div className="col-10">
+                            {description} 
+                            <hr />
+                            { price + '원' }
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        class BookList extends React.Component {
+            state = {
+                theme: 'blue'
+            }
+            blueTheme = () => this.setState({theme: 'blue'});
+            whiteTheme = () => this.setState({theme: 'white'});
+            render() {
+                return (
+                    <>
+                        <div>{this.state.theme === "white" ? "white theme" : "blue theme" }</div>
+                        <div>
+                                <button onClick={ () => { this.setState({theme: 'white'}); } }>White 1</button>
+                                <button onClick={ this.whiteTheme }>White 2</button>
+                                <button onClick={ () => { this.setState({theme: 'blue'}); } }>Blue 1</button>
+                                <button onClick={ this.blueTheme }>Blue 2</button>
+                        </div>
+                        <BookCard title={seeSharp.title} description={seeSharp.description} price={ 30000 } /> 
+                        <BookCard title="ASP.NET &amp; Core를 다루는 기술" description="ASP.NET &amp; Core를 다루는 기술 책입니다." price={ 55000 } /> 
+                    </>
+                );
+            }
+        }
+
+        // 클래스형 컴포넌트
+        class BookApp extends React.Component {
+            render() {
+                return (
+                    <>
+                        <BookTitle />
+                        <BookList sortOrder="ASC" /> 
+                        <BookFooter />
+                        <Copyright /> 
+                    </>
+                );
+            }
+        }
+
+        // 최종 렌더링
+        ReactDOM.render(
+            <BookApp />,              
+            document.getElementById("root")
+        );
+    </script>
+</body>
+</html>
