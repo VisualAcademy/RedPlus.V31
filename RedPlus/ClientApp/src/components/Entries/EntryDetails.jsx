@@ -18,6 +18,8 @@ export class EntryDetails extends Component {
         // 콜백에서 `this`가 작동하려면 아래와 같이 바인딩 해주어야 합니다.
         // https://ko.reactjs.org/docs/handling-events.html
         this.navigateToIndex = this.navigateToIndex.bind(this);
+        this.navigateToDelete = this.navigateToDelete.bind(this); 
+        this.navigateToEdit = this.navigateToEdit.bind(this); 
     }
 
     // 페이지 로드, OnInitialized()
@@ -79,11 +81,9 @@ export class EntryDetails extends Component {
                             />
                         </div>
                         <div className="form-group">
-                            <button type="submit" className="btn btn-primary">Edit</button>
-                                &nbsp;
-                                <button type="submit" className="btn btn-primary">Delete</button>
-                                &nbsp;
-                                <button className="btn btn-secondary" onClick={this.navigateToIndex}>List</button>
+                            <button type="button" className="btn btn-primary" onClick={this.navigateToEdit}>Edit</button>&nbsp;
+                            <button type="button" className="btn btn-primary" onClick={this.navigateToDelete}>Delete</button>&nbsp;
+                            <button className="btn btn-secondary" onClick={this.navigateToIndex}>List</button>
                         </div>
                     </div>
                 </div>
@@ -95,5 +95,21 @@ export class EntryDetails extends Component {
     navigateToIndex() {
         const { history } = this.props;
         history.push('/Entries');
+    }
+
+    // 삭제 페이지로 이동
+    navigateToDelete() {
+        const { id } = this.props.match.params;
+
+        const { history } = this.props;
+        history.push('/Entries/Delete/' + id);
+    }
+
+    // 수정 페이지로 이동
+    navigateToEdit() {
+        const { id } = this.props.match.params;
+
+        const { history } = this.props;
+        history.push('/Entries/Edit/' + id);
     }
 }
