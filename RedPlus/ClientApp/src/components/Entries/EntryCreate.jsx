@@ -34,6 +34,7 @@ export class EntryCreate extends Component {
 
     }
 
+    // 게시판 글쓰기 버튼 클릭 이벤트
     handleSubmit(e) {
         e.preventDefault(); // 이벤트 기본 작업 방지: 버튼, 링크 등의 고유 기능을 제거하고 React 기능만 사용
 
