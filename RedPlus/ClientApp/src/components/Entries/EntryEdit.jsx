@@ -98,8 +98,7 @@ export class EntryEdit extends Component {
                         <form onSubmit={this.handleSubmit}>
                             <div className="form-group">
                                 <label>ID</label>
-                                <input type="text" className="form-control" value={this.state.id}
-                                />
+                                <input type="text" className="form-control" value={this.state.id} readOnly />
                             </div>
                             <div className="form-group">
                                 <label>Name</label>

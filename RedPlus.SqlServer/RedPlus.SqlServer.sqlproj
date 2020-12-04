@@ -58,10 +58,12 @@
     <Folder Include="Properties" />
     <Folder Include="IdentityServer" />
     <Folder Include="Entries" />
+    <Folder Include="Books" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="IdentityServer\__EFMigrationsHistory.sql" />
     <Build Include="Entries\00_Entries.sql" />
+    <Build Include="Books\00_Books.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="IdentityServer\AspNetRoleClaims.sql" />

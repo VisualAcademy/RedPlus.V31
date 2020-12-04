@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedPlus.Models", "RedPlus.M
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "RedPlus.SqlServer", "RedPlus.SqlServer\RedPlus.SqlServer.sqlproj", "{4CC732F6-2EF9-42FC-8AFA-58E3517EF61F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedPlus.Models.Tests", "RedPlus.Models.Tests\RedPlus.Models.Tests.csproj", "{59C9AA52-E950-4DAF-A940-1F1CE6F21564}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{4CC732F6-2EF9-42FC-8AFA-58E3517EF61F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CC732F6-2EF9-42FC-8AFA-58E3517EF61F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4CC732F6-2EF9-42FC-8AFA-58E3517EF61F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{59C9AA52-E950-4DAF-A940-1F1CE6F21564}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59C9AA52-E950-4DAF-A940-1F1CE6F21564}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59C9AA52-E950-4DAF-A940-1F1CE6F21564}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59C9AA52-E950-4DAF-A940-1F1CE6F21564}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

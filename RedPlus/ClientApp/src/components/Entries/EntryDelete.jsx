@@ -12,7 +12,7 @@ export class EntryDelete extends Component {
             name: '',
             title: "",
             content: "",
-            created: null
+            created: ''
         };
 
         // 콜백에서 `this`가 작동하려면 아래와 같이 바인딩 해주어야 합니다.

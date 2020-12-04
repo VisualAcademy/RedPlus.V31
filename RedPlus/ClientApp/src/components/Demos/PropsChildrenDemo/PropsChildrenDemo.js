@@ -1,4 +1,4 @@
-﻿import React, { Component } from 'react';
+﻿import React from 'react';
 
 // 자식 컴포넌트
 const PropsChildrenDemoSub = (props) => {

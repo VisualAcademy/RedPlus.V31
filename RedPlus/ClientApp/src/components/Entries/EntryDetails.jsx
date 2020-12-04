@@ -12,7 +12,7 @@ export class EntryDetails extends Component {
             name: '',
             title: "",
             content: "",
-            created: null
+            created: ""
         };
 
         // 콜백에서 `this`가 작동하려면 아래와 같이 바인딩 해주어야 합니다.
@@ -38,7 +38,7 @@ export class EntryDetails extends Component {
                 content: data.content,
                 created: data.created
                     ? new Date(data.created).toISOString().slice(0, 10)
-                    : null
+                    : ""
             });
         });
     }
@@ -52,32 +52,29 @@ export class EntryDetails extends Component {
                     <div className="col-md-8">
                         <div className="form-group">
                             <label>ID</label>
-                            <input type="text" className="form-control" value={this.state.id}
-                            />
+                            <input type="text" className="form-control" value={this.state.id} readOnly />
                         </div>
                         <div className="form-group">
                             <label>Name</label>
                             <input type="text" className="form-control"
-                                placeholder="Enter Name" value={this.state.name}
-                            />
+                                placeholder="Enter Name" value={this.state.name} readOnly />
                         </div>
                         <div className="form-group">
                             <label>Title</label>
                             <input type="text" className="form-control"
-                                value={this.state.title}
-                            />
+                                value={this.state.title} readOnly />
                         </div>
                         <div className="form-group">
                             <label>Content</label>
                             <textarea className="form-control"
                                 value={this.state.content}
-                                rows="5"
+                                rows="5" readOnly
                             ></textarea>
                         </div>
                         <div className="form-group">
                             <label>Created</label>
                             <input type="text" className="form-control"
-                                value={this.state.created}
+                                value={this.state.created} readOnly
                             />
                         </div>
                         <div className="form-group">

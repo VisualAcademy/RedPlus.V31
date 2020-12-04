@@ -1,4 +1,5 @@
-﻿import React, { useState } from 'react';
+﻿//import React, { useState } from 'react';
+import React from 'react';
 
 const Ideas = () => {
     //const [names, setNames] = useState([
@@ -17,4 +18,3 @@ const Ideas = () => {
 };
 
 export default Ideas;
-

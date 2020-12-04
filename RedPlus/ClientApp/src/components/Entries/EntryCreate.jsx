@@ -74,7 +74,7 @@ export class EntryCreate extends Component {
                 <h3>Create</h3>
 
                 <div className="row">
-                    <div className="col-md-8">
+                    <div className="col-md-8 offset-md-2">
                         <form onSubmit={this.handleSubmit}>
                             <div className="form-group">
                                 <label>Name</label>

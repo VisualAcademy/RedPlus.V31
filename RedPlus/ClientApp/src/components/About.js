@@ -17,13 +17,13 @@ export class About extends Component {
                 <div className="row mb-5">
                     <div className="col-md-6">
                         <div className="thumbnail">
-                            <img src="http://placeimg.com/640/480/any" className="img-fluid" />
+                            <img src="http://placeimg.com/640/480/any" className="img-fluid" alt="" />
                             <i>Photo by http://placeimg.com</i>
                         </div>
                     </div>
                     <div className="col-md-6">
                         <div className="thumbnail">
-                            <img src="http://unsplash.it/640/480/?random" className="img-fluid" />
+                            <img src="http://unsplash.it/640/480/?random" className="img-fluid" alt="" />
                             <i>Photo by https://unsplash.it</i>
                         </div>
                     </div>

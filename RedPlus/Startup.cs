@@ -1,4 +1,5 @@
-﻿using EntryApp.Models;
+﻿using BookApp.Shared;
+using EntryApp.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -64,6 +65,17 @@ namespace RedPlus
 
             // EntryApp 관련 의존성(종속성) 주입 관련 코드만 따로 모아서 관리 
             services.AddDependencyInjectionContainerForEntryApp(Configuration.GetConnectionString("DefaultConnection"));
+            AddDependencyInjectionContainerForBookApp(services);
+        }
+
+        private void AddDependencyInjectionContainerForBookApp(IServiceCollection services)
+        {
+            // BookAppDbContext.cs Inject: New DbContext Add
+            services.AddEntityFrameworkSqlServer().AddDbContext<BookAppDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            // IBookRepository.cs Inject: DI Container
+            services.AddTransient<IBookRepository, BookRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

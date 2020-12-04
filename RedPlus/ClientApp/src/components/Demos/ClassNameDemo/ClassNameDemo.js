@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import './ClassNameDemo.css';
 
 export class ClassNameDemo extends React.Component {

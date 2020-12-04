@@ -49,6 +49,12 @@ import UseEffectFetchApi from './components/Samples/UseEffectFetchApi';
 import TodoListInMemory from './components/TodoListInMemory';
 import { PropsTypesDemo } from './components/Demos/PropsTypesDemo/PropsTypesDemo';
 
+// Books 
+import { BooksIndex } from './components/Books/BooksIndex';
+import { BooksCreate } from './components/Books/BooksCreate';
+import { BooksEdit } from './components/Books/BooksEdit';
+import { BooksDelete } from './components/Books/BooksDelete';
+
 export default class App extends Component {
     static displayName = App.name;
 
@@ -60,6 +66,7 @@ export default class App extends Component {
                 <AuthorizeRoute path='/fetch-data' component={FetchData} />
                 <Route path={ApplicationPaths.ApiAuthorizationPrefix} component={ApiAuthorizationRoutes} />
 
+                {/* Entries */}
                 <Route path={['/Entries', '/Entries/Index']} component={EntryIndex} exact />
                 <Route path='/Entries/Create' component={EntryCreate} />
                 <Route path='/Entries/Details/:id' component={EntryDetails} />
@@ -97,6 +104,12 @@ export default class App extends Component {
                 <Route path='/FetchApiPractice' component={FetchApiPractice} />
                 <Route path='/TextBoxOnChangeEventHandler' component={TextBoxOnChangeEventHandler} />
                 <Route path='/ReactFragmentDemo' component={ReactFragmentDemo} />
+
+                {/* Books */}
+                <Route path={['/Books', '/Books/Index']} component={BooksIndex} exact />
+                <Route path='/Books/Create' component={BooksCreate} exact={true} />
+                <Route path='/Books/Edit/:id' component={BooksEdit} exact />
+                <Route path='/Books/Delete/:id' component={BooksDelete} exact />
 
             </Layout>
         );

@@ -19,6 +19,7 @@ export class EntryIndex extends Component {
         this.deleteBy = this.deleteBy.bind(this);
         this.deleteDirectBy = this.deleteDirectBy.bind(this); 
         this.detailsBy = this.detailsBy.bind(this);
+        this.detailsLink = this.detailsLink.bind(this);
     }
 
     // 페이지 로드, OnInitialized()
@@ -76,8 +77,7 @@ export class EntryIndex extends Component {
                         <tr key={entry.id}>
                             <td>{entry.id}</td>
                             <td>
-                                <button className="btn btn-link"
-                                    onClick={() => this.detailsBy(entry.id)}>{entry.title}</button>
+                                <a href={`/Entries/Details/${entry.id}`} onClick={(e) => this.detailsLink(entry.id, e)}>{entry.title}</a>
                             </td>
                             <td>{entry.name}</td>
                             <td>{entry.content}</td>
@@ -107,6 +107,12 @@ export class EntryIndex extends Component {
         history.push("/Entries/Details/" + id);
     }
 
+    detailsLink(id, e) {
+        e.preventDefault(); // 이벤트 기본 작업 방지: 버튼, 링크 등의 고유 기능을 제거하고 React 기능만 사용
+        const { history } = this.props;
+        history.push("/Entries/Details/" + id);
+    }
+
     editBy(id) {
         const { history } = this.props;
         history.push("/Entries/Edit/" + id);
@@ -124,7 +130,7 @@ export class EntryIndex extends Component {
                 // 인메모리의 상태 데이터 업데이트
                 this.setState({
                     entries: this.state.entries.filter((en) => {
-                        return en.id != id; 
+                        return en.id !== id; 
                     })
                 })
             });

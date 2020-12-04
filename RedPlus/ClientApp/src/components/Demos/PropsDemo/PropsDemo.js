@@ -1,4 +1,4 @@
-﻿import React, { Component } from 'react';
+﻿import React from 'react';
 
 const PropsDemoSub = props => {
     return <h2>[2] 자식: 매개 변수로 받은 값: {props.message}</h2>
