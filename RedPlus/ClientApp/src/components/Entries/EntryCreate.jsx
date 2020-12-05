@@ -72,18 +72,17 @@ export class EntryCreate extends Component {
         return (
             <>
                 <h3>Create</h3>
-
                 <div className="row">
                     <div className="col-md-8 offset-md-2">
                         <form onSubmit={this.handleSubmit}>
                             <div className="form-group">
-                                <label>Name</label>
+                                <label htmlFor="name">Name</label>
                                 <input type="text" className="form-control"
                                     placeholder="Enter Name" value={this.state.name}
                                     onChange={this.handleChageName}
+                                    name="name"
                                 /> 
                             </div>
-
                             <div className="form-group">
                                 <label>Title</label>
                                 <input type="text" className="form-control"
@@ -91,7 +90,6 @@ export class EntryCreate extends Component {
                                     onChange={this.handleChageTitle}
                                 />
                             </div>
-
                             <div className="form-group">
                                 <label>Content</label>
                                 <textarea className="form-control"
@@ -100,9 +98,8 @@ export class EntryCreate extends Component {
                                     rows="5"
                                 ></textarea>
                             </div>
-
                             <div className="form-group">
-                                <button type="submit" className="btn btn-primary">Submit</button>
+                                <button type="submit" className="btn btn-success">Submit</button>
                                 &nbsp;
                                 <button className="btn btn-secondary" onClick={this.navigateToIndex}>List</button>
                             </div>

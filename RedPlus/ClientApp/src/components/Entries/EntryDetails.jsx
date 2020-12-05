@@ -47,7 +47,6 @@ export class EntryDetails extends Component {
         return (
             <>
                 <h1>Details</h1>
-
                 <div className="row">
                     <div className="col-md-8">
                         <div className="form-group">

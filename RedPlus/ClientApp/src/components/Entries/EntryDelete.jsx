@@ -69,32 +69,33 @@ export class EntryDelete extends Component {
                         <form onSubmit={this.handleSubmit}>
                             <div className="form-group">
                                 <label>ID</label>
-                                <input type="text" className="form-control" value={this.state.id}
+                                <input type="text" className="form-control"
+                                    value={this.state.id} readOnly 
                                 />
                             </div>
                             <div className="form-group">
                                 <label>Name</label>
                                 <input type="text" className="form-control"
-                                    placeholder="Enter Name" value={this.state.name}
+                                    placeholder="Enter Name" defaultValue={this.state.name}
                                 />
                             </div>
                             <div className="form-group">
                                 <label>Title</label>
                                 <input type="text" className="form-control"
-                                    value={this.state.title}
+                                    defaultValue={this.state.title}
                                 />
                             </div>
                             <div className="form-group">
                                 <label>Content</label>
                                 <textarea className="form-control"
-                                    value={this.state.content}
+                                    defaultValue={this.state.content}
                                     rows="5"
                                 ></textarea>
                             </div>
                             <div className="form-group">
                                 <label>Created</label>
                                 <input type="text" className="form-control"
-                                    value={this.state.created}
+                                    defaultValue={this.state.created}
                                 />
                             </div>
                             <div className="form-group">

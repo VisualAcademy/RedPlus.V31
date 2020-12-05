@@ -61,7 +61,7 @@ export class EntryIndex extends Component {
     // 학습용 게시판 리스트 테이블 출력
     renderEntriesTable(entries) {
         return (
-            <table className='table table-striped' aria-labelledby="tabelLabel">
+            <table className='table table-striped' aria-labelledby="tableLabel">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -77,7 +77,8 @@ export class EntryIndex extends Component {
                         <tr key={entry.id}>
                             <td>{entry.id}</td>
                             <td>
-                                <a href={`/Entries/Details/${entry.id}`} onClick={(e) => this.detailsLink(entry.id, e)}>{entry.title}</a>
+                                <a href={`/Entries/Details/${entry.id}`}
+                                    onClick={(e) => this.detailsLink(entry.id, e)}>{entry.title}</a>
                             </td>
                             <td>{entry.name}</td>
                             <td>{entry.content}</td>

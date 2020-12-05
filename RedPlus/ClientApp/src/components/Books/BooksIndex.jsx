@@ -27,7 +27,7 @@ export class BooksIndex extends Component {
     // 책 리스트 테이블 출력
     renderBooksTable(books) {
         return (
-            <table className='table table-striped' aria-labelledby="tabelLabel">
+            <table className='table table-striped' aria-labelledby="tableLabel">
                 <thead>
                     <tr>
                         <th>Id</th>

@@ -33,6 +33,7 @@ export class EntryEdit extends Component {
     // 페이지 로드, OnInitialized()
     componentDidMount() {
         //[!] id Parameter 받기
+        //const id = this.props.match.params["id"]; // 이 방법도 사용 가능
         const { id } = this.props.match.params;
 
         //[!] id 값에 해당하는 단일 데이터를 Web API로부터 읽어오기
