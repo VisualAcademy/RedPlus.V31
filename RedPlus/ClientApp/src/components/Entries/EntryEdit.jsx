@@ -59,7 +59,8 @@ export class EntryEdit extends Component {
         const { id } = this.props.match.params; 
 
         let entryDto = {
-            name: this.state.name,
+            //name: this.state.name,
+            name: this.refs.txtName.value,
             title: this.state.title,
             content: this.state.content,
             created: this.state.created, // Created는 처음 가져온 것 그대로 설정 
@@ -102,10 +103,11 @@ export class EntryEdit extends Component {
                                 <input type="text" className="form-control" value={this.state.id} readOnly />
                             </div>
                             <div className="form-group">
-                                <label>Name</label>
+                                <label htmlFor="txtName">Name</label>
                                 <input type="text" className="form-control"
-                                    placeholder="Enter Name" value={this.state.name}
-                                    onChange={this.handleChageName}
+                                    placeholder="Enter Name"
+                                    defaultValue={this.state.name}
+                                    ref="txtName"
                                 />
                             </div>
                             <div className="form-group">
