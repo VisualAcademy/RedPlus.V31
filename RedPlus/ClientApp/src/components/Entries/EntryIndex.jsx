@@ -26,6 +26,7 @@ export class EntryIndex extends Component {
     // 페이지가 로드되었을 때 Web API 호출해서 JSON 데이터 가져오기: OnInitialized() 
     componentDidMount() {
         this.displayData();
+        //this.getEntriesDataWithFetch();
     }
 
     render() {
@@ -50,6 +51,7 @@ export class EntryIndex extends Component {
         this.props.history.push('/Entries/Create');
     }
 
+    //[!] Web API로부터 데이터 가져오기 
     async displayData() {
         const response = await axios.get("/api/Entries");
         const data = response.data;
@@ -135,6 +137,36 @@ export class EntryIndex extends Component {
                     })
                 })
             });
+        }
+    }
+
+    //[!] 참고: Web API 호출하는 3가지 모양 
+    //[1] Fetch API 
+    async populateEntriesData() {
+        const response = await fetch('/api/Entries');
+        const data = await response.json();
+        this.setState({ entries: data, loading: false });
+    }
+    //getEntriesDataWithFetch() {
+    //    fetch("/api/Entries")
+    //        .then(response => response.json())
+    //        .then(data => data
+    //            ? this.setState({ entries: data, loading: false })
+    //            : this.setState({ entries: {}, loading: true }));
+    //}
+    //[2] Axios + Async
+    populateEntriesDataWithAxios() {
+        axios.get("/api/Entries").then(response => {
+            const data = response.data;
+            this.setState({ entries: data, loading: false });
+        });
+    }
+    //[3] Axios + Async
+    async populateEntriesDataWithAxiosAsync() {
+        const response = await axios.get("/api/Entries");
+        const data = response.data;
+        if (data) {
+            this.setState({ entries: data, loading: false });
         }
     }
 }
