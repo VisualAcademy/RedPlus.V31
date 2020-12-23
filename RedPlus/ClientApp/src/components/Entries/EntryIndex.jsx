@@ -13,7 +13,7 @@ export class EntryIndex extends Component {
             loading: true,
 
             pageNumber: 1,
-            pageSize: 10,
+            pageSize: 5,
             pagerButtonCount: 5,
             recordCount: 0,
             pageIndex: 0
@@ -38,9 +38,8 @@ export class EntryIndex extends Component {
     componentDidMount() {
         this.displayData();
         //this.getEntriesDataWithFetch();
-
-        const recordCount = 1191;
-        this.setState({ recordCount: recordCount });
+        //const recordCount = 1191;
+        //this.setState({ recordCount: recordCount });
     }
 
     render() {
@@ -69,9 +68,15 @@ export class EntryIndex extends Component {
         );
     }
 
-    pageIndexChanged(pageIndex) {
-        this.setState({ pageIndex: pageIndex, pageNumber: (pageIndex + 1) });
+    async pageIndexChanged(pageIndex) {
+        let pageNumber = pageIndex + 1;
+        await this.setState({ pageIndex: pageIndex, pageNumber: pageNumber });
         this.displayData(); 
+        //const response = await axios.get(`/api/Entries/Page/${pageNumber}/${this.state.pageSize}`);
+        //const data = response.data;
+        //if (data) {
+        //    this.setState({ entries: data, loading: false, recordCount: response.headers["x-totalrecordcount"] });
+        //}
     }
 
     // 글쓰기 페이지로 이동
@@ -83,10 +88,10 @@ export class EntryIndex extends Component {
 
     //[!] Web API로부터 데이터 가져오기 
     async displayData() {
-        const response = await axios.get("/api/Entries");
+        const response = await axios.get(`/api/Entries/Page/${this.state.pageNumber}/${this.state.pageSize}`);
         const data = response.data;
         if (data) {
-            this.setState({ entries: data, loading: false });
+            this.setState({ entries: data, loading: false, recordCount: response.headers["x-totalrecordcount"]});
         }
     }
 
