@@ -1,22 +1,14 @@
-﻿// @page "/Entries"
-// @page "/Entries/Index"
+﻿// @page "/Entries/List"
 import React, { Component } from 'react';
 import axios from 'axios';
-import { DulPagination } from '../Shared/DulPagination';
 
-export class EntryIndex extends Component {
+export class EntryList extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
             entries: [],
-            loading: true,
-
-            pageNumber: 1,
-            pageSize: 10,
-            pagerButtonCount: 5,
-            recordCount: 0,
-            pageIndex: 0
+            loading: true
         };
 
         // 콜백에서 `this`가 작동하려면 아래와 같이 바인딩 해주어야 합니다.
@@ -27,10 +19,6 @@ export class EntryIndex extends Component {
         this.deleteDirectBy = this.deleteDirectBy.bind(this); 
         this.detailsBy = this.detailsBy.bind(this);
         this.detailsLink = this.detailsLink.bind(this);
-
-        // Pagination
-        this.pageIndexChanged = this.pageIndexChanged.bind(this); 
-        this.displayData = this.displayData.bind(this); 
     }
 
     // 페이지 로드, OnInitialized()
@@ -38,9 +26,6 @@ export class EntryIndex extends Component {
     componentDidMount() {
         this.displayData();
         //this.getEntriesDataWithFetch();
-
-        const recordCount = 1191;
-        this.setState({ recordCount: recordCount });
     }
 
     render() {
@@ -53,25 +38,9 @@ export class EntryIndex extends Component {
                 <h1>List <button className="btn btn-sm btn-primary"
                     onClick={this.navigateToCreate}><span className="fa fa-plus">+</span></button></h1>
                 <div style={{ fontStyle: "italic" }}>게시판 리스트 페이지입니다.</div>
-                <div className="table-responsive">
-                    {contents}
-                </div>
-                <div className="col-md-12">
-                    <DulPagination
-                        pageNumber={this.state.pageNumber}
-                        pageSize={this.state.pageSize}
-                        pagerButtonCount={this.state.pagerButtonCount}
-                        recordCount={this.state.recordCount}
-                        pageIndexChanged={(pageIndex) => this.pageIndexChanged(pageIndex)}>
-                    </DulPagination>
-                </div>
+                {contents}
             </>
         );
-    }
-
-    pageIndexChanged(pageIndex) {
-        this.setState({ pageIndex: pageIndex, pageNumber: (pageIndex + 1) });
-        this.displayData(); 
     }
 
     // 글쓰기 페이지로 이동

@@ -16,6 +16,7 @@ import { EntryCreate } from './components/Entries/EntryCreate';
 import { EntryDetails } from './components/Entries/EntryDetails';
 import { EntryEdit } from './components/Entries/EntryEdit';
 import { EntryDelete } from './components/Entries/EntryDelete';
+import { EntryList } from './components/Entries/EntryList';
 
 // Articles
 import ReactRoadMap from './articles/ReactRoadMap';
@@ -83,6 +84,7 @@ export default class App extends Component {
                 <Route path='/Entries/Details/:id' component={EntryDetails} />
                 <Route path='/Entries/Edit/:id' component={EntryEdit} />
                 <Route path='/Entries/Delete/:id' component={EntryDelete} />
+                <Route path='/Entries/List' component={EntryList} />
 
                 {/* Articles */}
                 <Route path="/Articles/ReactRoadMap" component={ReactRoadMap} /> 
