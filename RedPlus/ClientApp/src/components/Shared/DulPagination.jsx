@@ -127,7 +127,7 @@ export class DulPagination extends Component {
         }
 
         //@* 다음 n개 링크 *@
-        if (i < pageCount) {
+        if (i <= pageCount) {
             // 다음 n개 페이지 번호 계산
             let nextN = parseInt(pageIndex / pagerButtonCount) * pagerButtonCount + pagerButtonCount + 1; //[?] 
             pages.push(
