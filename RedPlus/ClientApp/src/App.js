@@ -22,6 +22,7 @@ import { EntryList } from './components/Entries/EntryList';
 import ReactRoadMap from './articles/ReactRoadMap';
 import MapAndKey from './articles/MapAndKey';
 import CheckBoxWithUseState from './articles/CheckBoxWithUseState';
+import { SearchBoxTest } from './articles/SearchBoxTest';
 
 // React Part 1
 import { About } from './components/About';
@@ -90,6 +91,7 @@ export default class App extends Component {
                 <Route path="/Articles/ReactRoadMap" component={ReactRoadMap} /> 
                 <Route path="/Articles/MapAndKey" component={MapAndKey} /> 
                 <Route path="/Articles/CheckBoxWithUseState" component={CheckBoxWithUseState} /> 
+                <Route path="/Articles/SearchBoxTest" component={SearchBoxTest} /> 
 
                 {/* React Part 1 */}
                 <Route path='/about' component={About} />
