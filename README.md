@@ -20,3 +20,7 @@ https://www.youtube.com/playlist?list=PLO56HZSjrPTC2uEcWV8_1MnVM83RMAR8N
 https://www.youtube.com/playlist?list=PLO56HZSjrPTBKn0sa6NBY6Nu0GA6Urh-Y
 
 
+## 운영 설정
+
+Visual Studio 2019를 ASP.NET 워크로드를 추가한 후 설치한 상태에서 현재 리포지토리가 정상적으로 가동됩니다.
+
