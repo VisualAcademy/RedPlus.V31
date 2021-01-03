@@ -104,7 +104,15 @@ export class EntryIndex extends Component {
 
     //[!] Web API로부터 데이터 가져오기 
     async displayData() {
-        const response = await axios.get(`/api/Entries/Page/${this.state.pageNumber}/${this.state.pageSize}`);
+        let WEB_API_URI = "";
+        if (this.state.searchQuery !== '') {
+            WEB_API_URI = `/api/Entries/Search/${this.state.pageNumber}/${this.state.pageSize}?searchQuery=${this.state.searchQuery}`;
+        }
+        else {
+            WEB_API_URI = `/api/Entries/Page/${this.state.pageNumber}/${this.state.pageSize}`;
+        }
+
+        const response = await axios.get(WEB_API_URI);
         const data = response.data;
         if (data) {
             this.setState({ entries: data, loading: false, recordCount: response.headers["x-totalrecordcount"]});

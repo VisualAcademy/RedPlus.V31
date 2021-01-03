@@ -10,5 +10,11 @@ namespace EntryApp.Models
         // Empty
 
         Task<PagingResult<Entry>> GetAllAsync(int pageIndex, int pageSize); // 페이징
+
+        // 검색
+        Task<PagingResult<Entry>> SearchAllAsync(
+            int pageIndex,
+            int pageSize,
+            string searchQuery);
     }
 }

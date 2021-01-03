@@ -238,6 +238,36 @@ namespace EntryApp.Apis.Controllers
                 return BadRequest();
             }
         }
+        // 페이징
+        // GET api/Entries/Page/1/10
+        [HttpGet("Search/{pageNumber:int}/{pageSize:int}")]
+        public async Task<IActionResult> GetAll(int pageNumber = 1, int pageSize = 10, string searchQuery = "")
+        {
+            try
+            {
+                // 페이지 번호는 1, 2, 3 사용, 리포지토리에서는 0, 1, 2 사용
+                int pageIndex = (pageNumber > 0) ? pageNumber - 1 : 0;
+
+                var resultSet = await _repository.SearchAllAsync(pageIndex, pageSize, searchQuery);
+                if (resultSet.Records == null)
+                {
+                    return NotFound($"아무런 데이터가 없습니다.");
+                }
+
+                // 응답 헤더에 총 레코드 수를 담아서 출력
+                Response.Headers.Add("X-TotalRecordCount", resultSet.TotalRecords.ToString());
+                Response.Headers.Add("Access-Control-Expose-Headers", "X-TotalRecordCount");
+
+                //return Ok(resultSet.Records);
+                var ʘ‿ʘ = resultSet.Records; // 재미를 위해서 
+                return Ok(ʘ‿ʘ); // Look of Approval
+            }
+            catch (Exception ಠ_ಠ) // Look of Disapproval
+            {
+                _logger?.LogError($"ERROR({nameof(GetAll)}): {ಠ_ಠ.Message}");
+                return BadRequest();
+            }
+        }
         #endregion
     }
 
