@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { DulPagination } from '../Shared/DulPagination';
+import { SearchBox } from '../Shared/SearchBox';
 
 export class EntryIndex extends Component {
     constructor(props) {
@@ -16,7 +17,9 @@ export class EntryIndex extends Component {
             pageSize: 5,
             pagerButtonCount: 5,
             recordCount: 0,
-            pageIndex: 0
+            pageIndex: 0, 
+
+            searchQuery: ''
         };
 
         // 콜백에서 `this`가 작동하려면 아래와 같이 바인딩 해주어야 합니다.
@@ -31,6 +34,9 @@ export class EntryIndex extends Component {
         // Pagination
         this.pageIndexChanged = this.pageIndexChanged.bind(this); 
         this.displayData = this.displayData.bind(this); 
+
+        // Search
+        this.searchQueryChanged = this.searchQueryChanged.bind(this); 
     }
 
     // 페이지 로드, OnInitialized()
@@ -64,8 +70,18 @@ export class EntryIndex extends Component {
                         pageIndexChanged={(pageIndex) => this.pageIndexChanged(pageIndex)}>
                     </DulPagination>
                 </div>
+                <div className="col-md-12">
+                    <SearchBox searchQueryChanged={(searchQuery) => this.searchQueryChanged(searchQuery)}>
+                    </SearchBox>
+                </div>
             </>
         );
+    }
+
+    async searchQueryChanged(searchQuery) {
+        await this.setState({ searchQuery: searchQuery });
+        console.log("Search:", searchQuery);
+        this.displayData(); 
     }
 
     async pageIndexChanged(pageIndex) {

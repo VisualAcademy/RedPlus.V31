@@ -13,13 +13,13 @@ export class SearchBox extends Component {
         this.props.searchQueryChanged(this.state.searchQuery); 
     }
     searchHandler = this.debounce(() => {
-        console.log('Child:', this.state.searchQuery); 
+        //console.log('Child:', this.state.searchQuery); 
         this.sendSearchQuery(); 
     }, 300)
     searchQueryChanged(e) {
         const qry = e.target.value;
         this.setState({searchQuery: qry});
-        console.log(qry); 
+        //console.log(qry); 
         this.searchHandler(); 
     }
     debounce(fn, interval) {
@@ -35,7 +35,6 @@ export class SearchBox extends Component {
     render() {
         return (
             <>
-                <h3>SearBox Component</h3>
                 <div className="input-group mb-3">
                     <input className="form-control form-control-sm form-control-borderless" 
                         type="search" placeholder="Search topics or keywords" aria-describedby="btnSearch"
