@@ -2,6 +2,8 @@
 import { TechList } from './Shared/TechList/TechList';
 import { SiteList } from './Shared/SiteList/SiteList';
 
+import logo from "./VisualAcademyNewLogo.jpg";
+
 export class Home extends Component {
     static displayName = Home.name;
 
@@ -38,6 +40,12 @@ export class Home extends Component {
                             <SiteList></SiteList>
                         </div>
                     </div>
+                </div>
+
+                <hr />
+
+                <div className="text-center">
+                    <img src={logo} alt="Logo" />
                 </div>
             </>
         );
